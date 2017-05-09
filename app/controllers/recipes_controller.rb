@@ -25,6 +25,8 @@ class RecipesController < ApplicationController
 												directions: params[:directions]
 												)
 		recipe.save
+		flash[:success] = "Recipe Successfully Created"
+		redirect_to "/recipes/#{recipe.id}"
 	end
 
 	def edit
@@ -40,6 +42,16 @@ class RecipesController < ApplicationController
 														 directions: params[:directions]
 														)
 		recipe.save
+		flash[:success] = "Recipe successfully updated"
+		redirect_to "/recipes/#{recipe.id}"
+	end
+ 
+	def destroy
+		recipe = Recipe.find(params[:id])
+		recipe.destroy
+
+		flash[:success] = "Recipe destroyed"
+		redirect_to	"/"
 	end
 
 end
