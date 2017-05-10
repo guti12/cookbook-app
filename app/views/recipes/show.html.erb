@@ -1,6 +1,13 @@
 	<h2><%= @recipe.title %></h2>
+	<h5>Last update:<%= @recipe.updated_at.strftime('%A, %b %d') %></h5>
 	<h4><%= @recipe.chef %></h4>
-	<h3><%= @recipe.ingredients %></h3>
+	<h3>Ingredients</h3>
+	<ul>
+		<% @recipe.ingredients.split(", ").each do |ingredient| %>
+			<li><%= ingredient %></li>
+		<% end %>
+	</ul>
+	
 	<h3><%= @recipe.directions %></h3>
 
 	<a href="/recipes/<%= @recipe.id %>/edit">Edit Recipe</a>
