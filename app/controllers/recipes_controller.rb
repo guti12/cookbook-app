@@ -5,7 +5,19 @@ class RecipesController < ApplicationController
 	end
 
 	def index
-		@recipes = Recipe.all
+		if session[:count] == nil
+			session[:count] = 0
+		end
+
+		session[:count] += 1
+		@visit_count = session[:count]
+		
+		# @recipes = Recipe.all.order("title")
+		@recipes = Recipe.all 
+		sort_attritube = params[:sort]
+		if sort_attritube
+			@recipes = Recipe.all.order(sort_attritube)
+		end
 	end
 	
 	def show
