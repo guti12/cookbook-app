@@ -4,4 +4,8 @@ class Recipe < ApplicationRecord
 		
 	end
 
+	def chef 
+		user.name
+	end
+
 end

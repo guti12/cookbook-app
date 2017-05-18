@@ -20,4 +20,5 @@ def create
 		redirect_to '/signup'
 	end
 
+	end
 end
